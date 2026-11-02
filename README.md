@@ -1,6 +1,6 @@
 # DSH Plugin Test Controller
 
-> **本仓库是 v1.11.2 的公开只读快照。** 后续开发只在私有上游仓库进行，此副本不再更新。
+> **本仓库是 v1.11.3 的公开只读快照。** 后续开发只在私有上游仓库进行，此副本不再更新。
 
 [English](README.en.md) · 中文
 
@@ -62,7 +62,7 @@ node bin/dsh-test.mjs --root .state run headless-fixture
 
 ## 在管理用 DSH 中安装控制插件
 
-npm 上的 `dsh-plugin-test-controller` 停在 1.6.0，已不再更新（缺少 open 模式、expect、安装镜像和面板）。请从仓库安装（公开只读快照：[dsh-plugin-test-controller-public](https://github.com/Asern-l/dsh-plugin-test-controller-public)）：
+从仓库安装（公开只读快照：[dsh-plugin-test-controller-public](https://github.com/Asern-l/dsh-plugin-test-controller-public)）：
 
 ```powershell
 git clone https://github.com/Asern-l/dsh-plugin-test-controller-public.git <checkout>
@@ -306,4 +306,4 @@ GitHub Actions 在 Windows / Ubuntu 上执行同一组检查。
 
 设备探测、适用性分析、用例生成、真机执行和结果判定可以分别实现为插件，并用本控制器测试。它们尚未包含在本仓库中。真机执行插件应自行提供环境记录、设备占用及恢复能力。
 
-参考：[DSH 官方仓库](https://github.com/deepseek-ai/deepseek-harness)、[插件工具接口](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/cookbook/adding-a-tool.md)。本项目以 DSH npm 发布版 `0.2.1-rc.5` 为兼容基线（不是本插件发布到 npm）；上游 master 文档可能已包含后续版本接口。
+参考：[DSH 官方仓库](https://github.com/deepseek-ai/deepseek-harness)、[插件工具接口](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/cookbook/adding-a-tool.md)。兼容基线是 DSH `0.2.1-rc.5`；上游 master 文档可能已包含后续版本接口。

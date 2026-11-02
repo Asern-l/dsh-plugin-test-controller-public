@@ -1,6 +1,6 @@
 # DSH Plugin Test Controller
 
-> **Public read-only snapshot of v1.11.2.** Development continues in a private upstream repository; this copy is not updated.
+> **Public read-only snapshot of v1.11.3.** Development continues in a private upstream repository; this copy is not updated.
 
 [中文](README.md) · English
 
@@ -107,7 +107,7 @@ A failed assertion never interrupts collection or cleanup: the evidence stays co
 
 ## Agent tools and UI
 
-The npm package stopped at 1.6.0 and is no longer updated (no open mode, `expect`, install images or panel). Install from a checkout (public read-only snapshot: [dsh-plugin-test-controller-public](https://github.com/Asern-l/dsh-plugin-test-controller-public)):
+Install from a checkout (public read-only snapshot: [dsh-plugin-test-controller-public](https://github.com/Asern-l/dsh-plugin-test-controller-public)):
 
 ```bash
 git clone https://github.com/Asern-l/dsh-plugin-test-controller-public.git <checkout>

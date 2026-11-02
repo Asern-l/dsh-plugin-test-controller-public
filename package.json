@@ -1,6 +1,6 @@
 ﻿{
   "name": "dsh-plugin-test-controller",
-  "version": "1.11.2",
+  "version": "1.11.3",
   "description": "Disposable DeepSeek Harness plugin test runs with evidence export and lifecycle cleanup",
   "type": "module",
   "license": "MIT",
