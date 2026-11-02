@@ -1,10 +1,21 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { realpathSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import * as panel from '../src/panel.mjs';
+
+/** Compare paths the way the runtime reports them: symlinks and 8.3 short names resolved. */
+const canonical = (path) => {
+  try {
+    const real = realpathSync.native(path);
+    return process.platform === 'win32' ? real.toLowerCase() : real;
+  } catch {
+    return path;
+  }
+};
 
 async function harness() {
   const root = await mkdtemp(join(tmpdir(), 'dsh-panel-'));
@@ -232,7 +243,7 @@ test('panel switches the state root through /config and restores the default', a
 
     const state = await call(routes.get('exact /plugin-test/state'), { url: '/plugin-test/state' });
     assert.equal(JSON.parse(state.body).rootSource, 'ui');
-    assert.equal(JSON.parse(state.body).root.toLowerCase(), target.toLowerCase());
+    assert.equal(canonical(JSON.parse(state.body).root), canonical(target));
     assert.equal((await call(routes.get('exact /plugin-test/state'), { url: '/plugin-test/state' })).status, 200);
 
     const bad = await call(routes.get('exact /plugin-test/config'), {

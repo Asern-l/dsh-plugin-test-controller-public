@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { validatePlan } from '../src/plan.mjs';
 import { evaluateExpectations } from '../src/worker.mjs';
 
@@ -23,7 +23,7 @@ test('expect accepts path/contains/matches forms and rejects malformed entries',
     [{ file: 'a.json', equals: 1, contains: 'x' }],
     [{ file: 'a.json', matches: '(' }],
     [{ file: 'a.json', equals: 1, extra: true }],
-    [{ file: 'C:\\x.json', equals: 1 }]
+    [{ file: resolve('x.json'), equals: 1 }]
   ];
   for (const expect of bad) assert.throws(() => validatePlan({ name: 'case', expect }), /expect/i, JSON.stringify(expect));
 });

@@ -1,8 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, mkdir, readFile, writeFile, rm, symlink } from 'node:fs/promises';
+import { realpathSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
+
+/** Compare paths the way the runtime reports them: symlinks and 8.3 short names resolved. */
+const canonical = (path) => {
+  try {
+    const real = realpathSync.native(path);
+    return process.platform === 'win32' ? real.toLowerCase() : real;
+  } catch {
+    return path;
+  }
+};
 import { validatePlan } from '../src/plan.mjs';
 import { workerEnvironment, sandboxEnvironment, redact, nodeEnvironment } from '../src/environment.mjs';
 import { initRoot, cleanSandbox, json, exists, runDirectory, inside } from '../src/storage.mjs';
@@ -34,7 +45,7 @@ test('default state root lives under DSH_HOME so it travels with the environment
   process.env.DSH_HOME = home;
   try {
     const controller = new Controller();
-    assert.equal(await controller.root(), resolve(join(home, 'plugin-test-controller')));
+    assert.equal(canonical(await controller.root()), canonical(join(home, 'plugin-test-controller')));
     assert.deepEqual(await controller.plans(), []);
   } finally {
     if (previous === undefined) delete process.env.DSH_HOME;

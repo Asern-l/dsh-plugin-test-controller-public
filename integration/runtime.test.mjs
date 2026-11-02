@@ -21,7 +21,7 @@ test('real Cordis registry mounts and unloads all controller tools', async t => 
     await ctx.plugin(SystemPrompt);
     await ctx.plugin(Tools);
     const mounted = ctx.plugin(plugin, { root: join(temp, 'state') }); await mounted;
-    assert.equal(ctx.tools.schemas().length, 5);
+    assert.equal(ctx.tools.schemas().length, 7);
     const definition = ctx.tools.get('plugin_test_plans');
     const result = await definition.execute({}, { signal: new AbortController().signal });
     assert.deepEqual(result, []);
