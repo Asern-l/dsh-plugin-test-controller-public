@@ -1,0 +1,12 @@
+{
+  "name": "dsh-fixture-bundle",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Dependency-free bundle used to exercise the controller's install phase",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

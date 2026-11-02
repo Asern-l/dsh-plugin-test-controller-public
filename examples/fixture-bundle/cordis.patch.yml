@@ -1,0 +1,3 @@
+- insert:
+    - id: fixture-bundle
+      name: ./src/plugin.mjs

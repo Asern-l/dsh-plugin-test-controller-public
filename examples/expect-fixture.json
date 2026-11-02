@@ -1,0 +1,11 @@
+{
+  "name": "expect-fixture",
+  "mode": "inspect",
+  "plugins": [{ "module": "./fixture-plugin.mjs" }],
+  "expect": [
+    { "file": "environment.json", "path": "plan", "equals": "expect-fixture" },
+    { "file": "environment.json", "path": "mode", "equals": "inspect" },
+    { "file": "environment.json", "path": "credentialNames", "equals": [] },
+    { "file": "stdout.log", "contains": "x-cordis" }
+  ]
+}

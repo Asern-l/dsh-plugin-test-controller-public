@@ -1,0 +1,8 @@
+{
+  "name": "headless-fixture",
+  "mode": "headless",
+  "prompt": "Reply with the single word READY. Do not use tools.",
+  "plugins": [{ "module": "./fixture-plugin.mjs" }],
+  "credentialEnv": ["DEEPSEEK_API_KEY"],
+  "timeoutSeconds": 120
+}

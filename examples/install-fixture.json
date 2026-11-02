@@ -1,0 +1,7 @@
+{
+  "name": "install-fixture",
+  "mode": "inspect",
+  "install": [{ "source": "file:./fixture-bundle" }],
+  "timeoutSeconds": 120,
+  "installTimeoutSeconds": 300
+}

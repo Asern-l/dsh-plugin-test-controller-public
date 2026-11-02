@@ -1,0 +1,6 @@
+{
+  "name": "inspect-fixture",
+  "mode": "inspect",
+  "plugins": [{ "module": "./fixture-plugin.mjs" }],
+  "timeoutSeconds": 120
+}

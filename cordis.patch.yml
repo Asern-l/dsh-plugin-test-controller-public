@@ -1,0 +1,5 @@
+- insert:
+    - id: plugin-test-controller
+      name: ./src/plugin.mjs
+    - id: plugin-test-panel
+      name: ./src/panel.mjs

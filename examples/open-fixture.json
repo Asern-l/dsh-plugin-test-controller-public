@@ -1,0 +1,6 @@
+{
+  "name": "open-fixture",
+  "mode": "open",
+  "install": [{ "source": "file:./fixture-bundle" }],
+  "openTimeoutSeconds": 600
+}

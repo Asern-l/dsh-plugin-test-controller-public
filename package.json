@@ -1,0 +1,74 @@
+{
+  "name": "dsh-plugin-test-controller",
+  "version": "1.11.0",
+  "description": "Disposable DeepSeek Harness plugin test runs with evidence export and lifecycle cleanup",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asern-l/dsh-plugin-test-controller-public.git"
+  },
+  "homepage": "https://github.com/Asern-l/dsh-plugin-test-controller-public#readme",
+  "bugs": {
+    "url": "https://github.com/Asern-l/dsh-plugin-test-controller-public/issues"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "plugin-testing",
+    "test-runner",
+    "agent",
+    "cordis",
+    "isolation"
+  ],
+  "engines": {
+    "node": ">=24",
+    "dsh": "0.2.1-rc.5"
+  },
+  "exports": {
+    ".": "./src/plugin.mjs",
+    "./runner": "./src/controller.mjs",
+    "./client": "./src/client.js"
+  },
+  "bin": {
+    "dsh-test": "./bin/dsh-test.mjs"
+  },
+  "files": [
+    "src",
+    "bin",
+    "cordis.patch.yml",
+    "examples",
+    "README.md",
+    "README.en.md",
+    "CHANGELOG.md",
+    "docs",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.5"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.2.1-rc.5"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.5",
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/dsh-system-prompt": "0.2.1-rc.5"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "test:integration": "node --test integration/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "pack:check": "npm pack --dry-run"
+  }
+}
