@@ -1,11 +1,10 @@
 # DSH Plugin Test Controller
 
-> **Public read-only snapshot of v1.11.1.** Development continues in a private upstream repository; this copy is not updated.
+> **Public read-only snapshot of v1.11.2.** Development continues in a private upstream repository; this copy is not updated.
 
 [中文](README.md) · English
 
 [![checks](https://github.com/Asern-l/dsh-plugin-test-controller-public/actions/workflows/ci.yml/badge.svg)](https://github.com/Asern-l/dsh-plugin-test-controller-public/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/dsh-plugin-test-controller.svg)](https://www.npmjs.com/package/dsh-plugin-test-controller)
 
 Disposable, evidence-producing test runs for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) plugins.
 
@@ -108,11 +107,13 @@ A failed assertion never interrupts collection or cleanup: the evidence stays co
 
 ## Agent tools and UI
 
-Install it into a DSH profile (published on npm, or point at this checkout):
+The npm package stopped at 1.6.0 and is no longer updated (no open mode, `expect`, install images or panel). Install from a checkout (public read-only snapshot: [dsh-plugin-test-controller-public](https://github.com/Asern-l/dsh-plugin-test-controller-public)):
 
 ```bash
-node <dsh>/lib/bin.js plugin --profile desktop add dsh-plugin-test-controller
-# or: ... add /absolute/path/to/dsh-plugin-test-controller
+git clone https://github.com/Asern-l/dsh-plugin-test-controller-public.git <checkout>
+cd <checkout>
+npm ci --ignore-scripts
+node <checkout>/node_modules/@deepseek-ai/dsh/lib/bin.js plugin --profile desktop add <checkout>
 ```
 
 Restart DSH afterwards. The plugin adds seven tools plus an interactive panel:
