@@ -1,6 +1,6 @@
 # DSH Plugin Test Controller
 
-> **Public read-only snapshot of v1.11.0.** Development continues in a private upstream repository; this copy is not updated.
+> **Public read-only snapshot of v1.11.1.** Development continues in a private upstream repository; this copy is not updated.
 
 [中文](README.md) · English
 
@@ -115,7 +115,7 @@ node <dsh>/lib/bin.js plugin --profile desktop add dsh-plugin-test-controller
 # or: ... add /absolute/path/to/dsh-plugin-test-controller
 ```
 
-Restart DSH afterwards. The plugin adds six tools plus an interactive panel:
+Restart DSH afterwards. The plugin adds seven tools plus an interactive panel:
 
 | tool | purpose |
 |---|---|
@@ -124,11 +124,12 @@ Restart DSH afterwards. The plugin adds six tools plus an interactive panel:
 | `plugin_test_status` | state, checks, cleanup |
 | `plugin_test_cancel` | request cancellation |
 | `plugin_test_export` | evidence directory and result |
-| `plugin_test_open` / `plugin_test_destroy` | park and destroy an interactive run |
+| `plugin_test_open` | park an interactive DSH run, return its URL |
+| `plugin_test_destroy` | destroy a parked run, collect evidence, delete the sandbox |
 
 The web client contributes a **sidebar panel**: plans, runs, evidence and a memory-only test credential, without going through a chat.
 
-Clicking a plan expands a read-only summary: mode, the equivalent DSH command, plugin entries with their config, install sources, `credentialEnv`, evidence list, timeouts and assertions. Plans themselves stay operator-registered through the CLI.
+Clicking a plan expands a read-only summary: mode, the equivalent DSH command, plugin entries with their config, install sources, `credentialEnv`, evidence list, timeouts and assertions. Plans are created and deleted from the panel, described below.
 
 Clicking a run expands its details: state and duration, errors, individual assertions, install origin (image or fresh), package versions, evidence files with sizes and the tails of `install.log`, `stderr` and `stdout`. The header shows plan/run/live/image counters and a run filter.
 

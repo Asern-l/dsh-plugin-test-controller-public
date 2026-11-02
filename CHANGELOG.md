@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.11.1 — 2026-11-02
+
+- 修正文档与界面里的过期说法：工具数量改为 7（含 `plugin_test_open` / `plugin_test_destroy`），计划已可在面板新建与删除。
+- 更新面板截图（v1.11 界面、新建计划按钮、运行删除）。
+- 测试断言可在 Windows/macOS/Linux 一致通过：路径比较走 `realpath` 规范化（兼容 runner 的 8.3 短路径），绝对路径样本改用 `path.resolve`。
+
 ## 1.11.0 — 2026-10-31
 
 - 面板内新建计划：粘贴 JSON，用与 CLI 相同的校验后写入 `plans/<name>.json`（相对模块路径按状态根解析）。

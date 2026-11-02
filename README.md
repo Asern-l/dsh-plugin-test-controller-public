@@ -1,6 +1,6 @@
 # DSH Plugin Test Controller
 
-> **本仓库是 v1.11.0 的公开只读快照。** 后续开发只在私有上游仓库进行，此副本不再更新。
+> **本仓库是 v1.11.1 的公开只读快照。** 后续开发只在私有上游仓库进行，此副本不再更新。
 
 [English](README.en.md) · 中文
 
@@ -37,7 +37,7 @@
 
 ```powershell
 git clone https://github.com/Asern-l/dsh-plugin-test-controller-public.git
-cd dsh-plugin-test-controller
+cd dsh-plugin-test-controller-public
 npm ci --ignore-scripts
 
 node bin/dsh-test.mjs --root .state doctor
@@ -93,7 +93,7 @@ node bin/dsh-test.mjs --root D:\dsh-test-state plan examples/inspect.json
 
 > 使用 plugin_test_plans 查看测试计划，启动 inspect-fixture，查询状态直到结束，再导出结果并检查 cleanup。
 
-插件暴露 5 个工具，返回规范 JSON 值：
+插件暴露 7 个工具，返回规范 JSON 值：
 
 | 工具 | 参数 | 用途 |
 |---|---|---|
@@ -102,8 +102,10 @@ node bin/dsh-test.mjs --root D:\dsh-test-state plan examples/inspect.json
 | `plugin_test_status` | `id` | 查询执行与清理状态 |
 | `plugin_test_cancel` | `id` | 请求中止；之后继续查询状态 |
 | `plugin_test_export` | `id` | 获取已结束任务的证据目录与结论 |
+| `plugin_test_open` | `plan` | 起一个可交互的 DSH，返回它的地址 |
+| `plugin_test_destroy` | `id` | 关掉交互运行，取证据并删除沙箱 |
 
-计划注册、故障恢复保留在 CLI 中，Agent 工具不接收任意命令、插件路径、环境变量或删除路径。使用直接 overlay 时，可以给插件的 `config.root` 配置独立状态目录；也可以使用 `DSH_TEST_ROOT`。
+计划注册既可以用 CLI，也可以在面板里新建；故障恢复保留在 CLI 中。Agent 工具不接收任意命令、插件路径、环境变量或删除路径。使用直接 overlay 时，可以给插件的 `config.root` 配置独立状态目录；也可以使用 `DSH_TEST_ROOT`。
 
 状态根的解析顺序是 `config.root` → `DSH_TEST_ROOT` → `%DSH_HOME%\plugin-test-controller`（`DSH_HOME` 未设置时退回 `~/.dsh`）。默认值跟着 `DSH_HOME` 走：备份 `.dsh` 就带走了全部计划、运行和证据，换环境也不会读到另一份旧数据。
 
@@ -111,7 +113,7 @@ node bin/dsh-test.mjs --root D:\dsh-test-state plan examples/inspect.json
 
 插件是完整的 DSH 客户端插件：**侧边栏「插件测试」**是独立的一整页操作台，和「插件」「自动化任务」并列，点开就能用，不必经过主聊天。页面里能看状态根、注册的计划和最近运行，直接启动、取消、打开证据目录，每 3 秒刷新。
 
-点计划名可以展开**只读详情**：它的模式、等价 DSH 命令、插件入口与 config、安装来源（`file:`/`npm:`）、`credentialEnv`、证据清单、超时和断言列表。计划本身仍然只能由操作者用 CLI 注册——界面只读，避免绕过审批。
+点计划名可以展开**只读详情**：它的模式、等价 DSH 命令、插件入口与 config、安装来源（`file:`/`npm:`）、`credentialEnv`、证据清单、超时和断言列表。新建与删除计划见本节末尾。
 
 点运行号可以展开**运行详情**：状态与耗时、错误与清理错误、逐条断言、安装来源（镜像/本次）、包版本、证据文件与大小、`install.log` / `stderr` / `stdout` 尾部。顶部有概览（计划/运行/进行中/镜像）和运行筛选框。
 

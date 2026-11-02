@@ -414,7 +414,7 @@ window.__ModuleLoader__.load({
       },
         h('h2', { style: { fontSize: '18px', fontWeight: 600, margin: '0 0 4px' } }, '插件测试'),
         h('p', { style: { color: color.secondary, fontSize: '12px', margin: '0 0 10px' } },
-          '一次性 DSH 环境：装插件、跑计划、收证据。计划只能由操作者在终端用 dsh-test plan 注册。'),
+          '一次性 DSH 环境：装插件、跑计划、收证据。计划可以在这里新建，也可以在终端用 dsh-test plan 注册。'),
 
         h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '11px', color: color.secondary, alignItems: 'center' } },
           h(Badge, { tone: 'idle' }, `计划 ${plans.length}`),
