@@ -1,6 +1,6 @@
 # DSH Plugin Test Controller
 
-> **Public read-only snapshot of v1.11.3.** Development continues in a private upstream repository; this copy is not updated.
+> **Public read-only snapshot of v1.11.4.** Development continues in a private upstream repository; this copy is not updated.
 
 [中文](README.md) · English
 
